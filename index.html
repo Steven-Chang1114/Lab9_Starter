@@ -88,6 +88,14 @@
   </main>
 
   <script>
+
+    class InputError extends Error {
+      constructor(message) {
+        super(message);
+        this.name = "InputError";
+      }
+    }
+
     let form = document.querySelector('form');
     form.addEventListener('submit', e => {
       e.preventDefault();
@@ -101,7 +109,12 @@
         output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
       } catch (err) {
         output.innerHTML = 'ERROR!';
-        throw new ReferenceError('Invalid Inputs');
+        if (!firstNum) {
+          throw new ReferenceError('Invalid Inputs');
+        }
+        if (!secondNum) {
+          throw new InputError("Invalid input 2");
+        }
       } finally {
         console.log(`Final outputs: ${output.innerHTML}`);
       }
