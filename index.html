@@ -87,6 +87,13 @@
     </section>
   </main>
 
+  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+  <script>
+    window.TrackJS && TrackJS.install({ 
+      token: "1b29351beba741b5bb1e478f4eb5426b"
+      // for more configuration options, see https://docs.trackjs.com
+    });
+  </script>
   <script>
 
     class InputError extends Error {
@@ -207,7 +214,7 @@
     });
 
     errorBtns[14].addEventListener('click', () => {
-      throw 'global error';
+      random()
     });
 
 
